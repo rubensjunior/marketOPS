@@ -36,8 +36,23 @@
       "db_port": "5432",
       "db_user": "postgres.fsnhnociqaktsblgwzyz",
       "db_password": "@Baki025@025#",
+      "db_database": "postgres"
+    },
+    {
+      "name": "production",
+      "remoteURL": "https://marketops.com.br",
+      "databaseConnectionType": "custom",
+      "databaseType": "postgres",
+      "db_host": "aws-1-sa-east-1.pooler.supabase.com",
+      "db_port": "5432",
+      "db_user": "postgres.fsnhnociqaktsblgwzyz",
+      "db_password": "@Baki025@025#",
       "db_database": "postgres",
-      "webServerPort": 3000
+      "usage": "production",
+      "access": "ftp",
+      "ftpServer": "ftp.rubensbentes.com.br",
+      "ftpUser": "master@marketops.com.br",
+      "ftpPassword": "v2:2b59c9436999d91cd37ec6b64fba05c9ad5d2b292ec2588f"
     }
   ],
   "activeTarget": "Development",

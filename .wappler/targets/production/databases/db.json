@@ -1,0 +1,11 @@
+{
+  "direct": true,
+  "type": "postgres",
+  "connection": {
+    "host": "aws-1-sa-east-1.pooler.supabase.com",
+    "port": 5432,
+    "user": "postgres.fsnhnociqaktsblgwzyz",
+    "password": "@Baki025@025#",
+    "database": "postgres"
+  }
+}
