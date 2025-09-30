@@ -1,4 +1,4 @@
-<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="criarconta" appConnect="local" -->
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="criarconta" appConnect="local" components="{dmxValidator:{}}" -->
 <div class="container-fluid vh-100">
     <div class="row h-100">
         <div class="col-7 bg-dark"></div>
@@ -8,9 +8,67 @@
                     <h3>Criar conta</h3>
                     <p>Você está muito perto de dar seu próximo passo e profissionalizar ainda mais sua operação!</p>
                     <form id="formcriarconta">
-                        <div class="form-group mb-3"> <label for="input1" class="form-label">Some text</label>
-                            <input type="text" class="form-control" id="input1" name="input1" aria-describedby="input1_help" placeholder="Enter some text">
+                        <div class="form-group mb-3"> <label for="razao_social" class="form-label">Razão Social</label>
+                            <input type="text" class="form-control" id="razao_social" name="razao_social" aria-describedby="input1_help" required="" data-msg-required="Este é um campo obrigatório.">
                             <small id="input1_help" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="nome_fantasia" class="form-label">Nome Fantasia</label>
+                            <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" aria-describedby="input1_help1" required="" data-msg-required="Este é um campo obrigatório.">
+                            <small id="input1_help1" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="cnpj" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control" id="cnpj" name="cnpj" aria-describedby="input1_help3" required="" data-msg-required="Este é um campo obrigatório.">
+                            <small id="input1_help3" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="inscricao_municipal" class="form-label">Inscrição Municipal</label>
+                            <input type="text" class="form-control" id="inscricao_municipal" name="inscricao_municipal" aria-describedby="input1_help2" required="" data-msg-required="Este é um campo obrigatório.">
+                            <small id="input1_help2" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="endereco_completo" class="form-label">Endereço completo com número</label>
+                            <input type="text" class="form-control" id="endereco_completo" name="endereco_completo" aria-describedby="input1_help4">
+                            <small id="input1_help4" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="cep" class="form-label">CEP</label>
+                            <input type="text" class="form-control" id="cep" name="cep" aria-describedby="input1_help5" required="" data-msg-required="Este é um campo obrigatório.">
+                            <small id="input1_help5" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="input7" class="form-label">Complemento</label>
+                            <input type="text" class="form-control" id="input7" name="input1" aria-describedby="input1_help6" placeholder="Enter some text">
+                            <small id="input1_help6" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="cidade" name="cidade" aria-describedby="input1_help7">
+                            <small id="input1_help7" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="nome_completo" class="form-label">Estado</label>
+                            <select id="estado" class="form-select" name="estado">
+                                <option value="1">Option One</option>
+                                <option value="2">Option Two</option>
+                                <option value="3">Option Three</option>
+                            </select>
+                            <small id="input1_help8" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="nome_completo" class="form-label">Nome completo</label>
+                            <input type="text" class="form-control" id="nome_completo" name="nome_completo" aria-describedby="input9_help">
+                            <small id="input9_help" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="input9_help1" required="" data-msg-required="Este é um campo obrigatório." data-rule-email="" data-msg-email="Insira um e-mail válido.">
+                            <small id="input9_help1" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="whatsapp" class="form-label">Whatsapp</label>
+                            <input type="text" class="form-control" id="whatsapp" name="whatsapp" aria-describedby="input9_help2" required="" data-msg-required="Este é um campo obrigatório.">
+                            <small id="input9_help2" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" aria-describedby="input9_help3" required="" data-msg-required="Este é um campo obrigatório.">
+                            <small id="input9_help3" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <label for="confirmar_senha" class="form-label">Confirmar senha</label>
+                            <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" aria-describedby="input9_help4" required="" data-msg-required="Este é um campo obrigatório." data-rule-equalto="senha" data-msg-equalto="A senha inserida não confere com o campo anterior.">
+                            <small id="input9_help4" class="form-text text-muted">Your input is very valuable.</small>
+                        </div>
+                        <div class="form-group mb-3"> <button id="btn1" class="btn btn-primary">Cadastrar</button>
                         </div>
                     </form>
                     <a href="/" internal="true" class="text-decoration-none text-secondary">Voltar para login</a>

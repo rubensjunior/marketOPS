@@ -52,7 +52,23 @@
       "access": "ftp",
       "ftpServer": "ftp.rubensbentes.com.br",
       "ftpUser": "master@marketops.com.br",
-      "ftpPassword": "v2:2b59c9436999d91cd37ec6b64fba05c9ad5d2b292ec2588f"
+      "ftpPassword": "v2:b6b4d50720c22ab1234ae98e723de3da7163a4f1e34b754f"
+    },
+    {
+      "name": "production_go",
+      "remoteURL": "https://go.marketops.com.br",
+      "databaseConnectionType": "custom",
+      "databaseType": "postgres",
+      "db_host": "aws-1-sa-east-1.pooler.supabase.com",
+      "db_port": "5432",
+      "db_user": "postgres.fsnhnociqaktsblgwzyz",
+      "db_password": "@Baki025@025#",
+      "db_database": "postgres",
+      "usage": "production",
+      "access": "ftp",
+      "ftpServer": "ftp.rubensbentes.com.br",
+      "ftpUser": "master@go.marketops.com.br",
+      "ftpPassword": "v2:a55e07464182ca7acae5f32bb08bdf4c1a494c9f09e09f3d"
     }
   ],
   "activeTarget": "Development",
