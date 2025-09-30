@@ -1,0 +1,291 @@
+/* MarketOPS - CSS customizado */
+
+/* ===== BOOTSTRAP-STYLE BACK BUTTON ===== */
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.375rem;
+    background: #6c757d;
+    border: 1px solid #6c757d;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.back-btn:hover {
+    background: #5c636a;
+    border-color: #565e64;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn:active {
+    background: #545b62;
+    border-color: #4e555b;
+    transform: translateY(0);
+}
+
+.back-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+
+/* Page Header */
+h3 {
+    font-weight: 700;
+    color: var(--bs-body-color);
+    letter-spacing: -0.025em;
+}
+
+.text-muted {
+    color: #6c757d !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ===== ELEGANT FORM STYLING (DARK THEME) ===== */
+
+/* Form Headers */
+h5 {
+    font-weight: 600;
+    color: var(--bs-body-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    letter-spacing: -0.025em;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.form-label {
+    font-weight: 500;
+    color: var(--bs-body-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.025em;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border: 1px solid #495057;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    outline: none;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/* Textarea Specific */
+textarea.form-control {
+    resize: vertical;
+    min-height: calc(2.5rem + 2px);
+}
+
+/* Step Content */
+.step-content {
+    display: none;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+}
+
+.step-content.active {
+    display: block;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Step Navigation */
+.step-navigation {
+    border-top: 1px solid #495057;
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step-navigation .btn {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.025em;
+}
+
+.step-navigation .btn-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+    border: none;
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.3);
+}
+
+.step-navigation .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+.step-navigation .btn-success {
+    background: linear-gradient(135deg, #198754 0%, #157347 100%);
+    border: none;
+    box-shadow: 0 2px 4px rgba(25, 135, 84, 0.3);
+}
+
+.step-navigation .btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+}
+
+.step-navigation .btn-outline-secondary {
+    background: transparent;
+    border: 1px solid #6c757d;
+    color: #adb5bd;
+}
+
+.step-navigation .btn-outline-secondary:hover {
+    background: #495057;
+    border-color: #6c757d;
+    color: #f8f9fa;
+}
+
+/* Form Validation */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.form-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Alert Styling */
+.alert-info {
+    background: rgba(13, 110, 253, 0.1);
+    border: 1px solid rgba(13, 110, 253, 0.2);
+    border-radius: 0.75rem;
+    color: #0d6efd;
+    padding: 1rem 1.25rem;
+}
+
+.alert-info .alert-heading {
+    color: #0d6efd;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+    .step-navigation {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .step-navigation .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    .back-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+    
+    .page-header {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    h5 {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.375rem;
+    }
+    
+    .back-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.75rem;
+    }
+    
+    .text-muted {
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== DARK THEME COMPATIBILITY ===== */
+
+/* Ensure compatibility with Bootstrap dark theme */
+[data-bs-theme="dark"] .alert-info {
+    background: rgba(13, 110, 253, 0.1);
+    border-color: rgba(13, 110, 253, 0.2);
+    color: #6ea8fe;
+}
+
+[data-bs-theme="dark"] .back-btn {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: #ffffff;
+}
+
+[data-bs-theme="dark"] .back-btn:hover {
+    background: #5c636a;
+    border-color: #565e64;
+    color: #ffffff;
+}
+
+[data-bs-theme="dark"] .back-btn:active {
+    background: #545b62;
+    border-color: #4e555b;
+}
+
+[data-bs-theme="dark"] .back-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
