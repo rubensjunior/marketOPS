@@ -1,228 +1,228 @@
 <!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="criarconta" appConnect="local" components="{dmxValidator:{}}" -->
 <div class="container-fluid vh-100">
     <div class="row h-100">
-        <div class="col-7 bg-dark"></div>
-        <div class="col align-self-center">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-10 col-lg-9">
+        <!-- Coluna esquerda - oculta em mobile -->
+        <div class="col-xl-7 col-lg-6 d-none d-lg-block bg-02"></div>
 
-                    <!-- Header with back button -->
-                    <div class="page-header mb-4">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h3 class="mb-0">Criar conta</h3>
-                            <a href="/" internal="true" class="back-btn">
-                                <i class="fas fa-arrow-left"></i>
-                            </a>
+        <!-- Coluna direita - responsiva -->
+        <div class="col-xl-5 col-lg-6 col-12 d-flex align-items-center justify-content-center">
+            <div class="w-100 px-3 px-sm-4 px-lg-5 py-4">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-11 col-md-10 col-lg-11 col-xl-10">
+                        <div class="page-header mb-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <a href="/" internal="true" class="back-btn-apple">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                                <h3 class="mb-0 fs-4 fs-sm-3">Criar conta</h3>
+                            </div>
+                            <p class="text-muted mb-0 mt-2 fs-6">Você está muito perto de dar seu próximo passo e profissionalizar ainda mais sua operação!</p>
                         </div>
-                        <p class="text-muted mb-0 mt-2">Você está muito perto de dar seu próximo passo e profissionalizar ainda mais sua operação!</p>
+
+                        <!-- Divisor entre header e formulário -->
+                        <div class="header-divider mb-4"></div>
+
+                        <form is="dmx-serverconnect-form" id="formcriarconta" class="needs-validation" method="post" action="/api/register">
+
+                            <!-- Step 1: Dados da Empresa -->
+                            <div class="step-content active" id="step1">
+                                <h5 class="mb-3 fs-5">Dados da Empresa</h5>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="form-group mb-3">
+                                            <label for="razao_social" class="form-label">Razão Social <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="razao_social" name="razao_social" required data-msg-required="Este é um campo obrigatório.">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="nome_fantasia" class="form-label">Nome Fantasia <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" required data-msg-required="Este é um campo obrigatório.">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="cnpj" class="form-label">CNPJ <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18" required data-msg-required="Este é um campo obrigatório.">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="inscricao_estadual" class="form-label">Inscrição Estadual</label>
+                                            <input type="text" class="form-control" id="inscricao_estadual" name="inscricao_estadual" placeholder="Somente números ou ISENTO">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="inscricao_municipal" class="form-label">Inscrição Municipal</label>
+                                            <input type="text" class="form-control" id="inscricao_municipal" name="inscricao_municipal">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-navigation mt-4">
+                                    <div></div>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span class="d-none d-sm-inline">Próximo</span>
+                                        <span class="d-sm-none">Avançar</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Endereço -->
+                            <div class="step-content" id="step2">
+                                <h5 class="mb-3 fs-5">Endereço</h5>
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-8">
+                                        <div class="form-group mb-3">
+                                            <label for="endereco_completo" class="form-label">Endereço completo com número</label>
+                                            <input type="text" class="form-control" id="endereco_completo" name="endereco_completo">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group mb-3">
+                                            <label for="cep" class="form-label">CEP <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" maxlength="9" required data-msg-required="Este é um campo obrigatório.">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-8">
+                                        <div class="form-group mb-3">
+                                            <label for="cidade" class="form-label">Cidade</label>
+                                            <input type="text" class="form-control" id="cidade" name="cidade">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group mb-3">
+                                            <label for="estado" class="form-label">Estado</label>
+                                            <select id="estado" class="form-select" name="estado">
+                                                <option value="">Selecione</option>
+                                                <option value="AC">Acre</option>
+                                                <option value="AL">Alagoas</option>
+                                                <option value="AP">Amapá</option>
+                                                <option value="AM">Amazonas</option>
+                                                <option value="BA">Bahia</option>
+                                                <option value="CE">Ceará</option>
+                                                <option value="DF">Distrito Federal</option>
+                                                <option value="ES">Espírito Santo</option>
+                                                <option value="GO">Goiás</option>
+                                                <option value="MA">Maranhão</option>
+                                                <option value="MT">Mato Grosso</option>
+                                                <option value="MS">Mato Grosso do Sul</option>
+                                                <option value="MG">Minas Gerais</option>
+                                                <option value="PA">Pará</option>
+                                                <option value="PB">Paraíba</option>
+                                                <option value="PR">Paraná</option>
+                                                <option value="PE">Pernambuco</option>
+                                                <option value="PI">Piauí</option>
+                                                <option value="RJ">Rio de Janeiro</option>
+                                                <option value="RN">Rio Grande do Norte</option>
+                                                <option value="RS">Rio Grande do Sul</option>
+                                                <option value="RO">Rondônia</option>
+                                                <option value="RR">Roraima</option>
+                                                <option value="SC">Santa Catarina</option>
+                                                <option value="SP">São Paulo</option>
+                                                <option value="SE">Sergipe</option>
+                                                <option value="TO">Tocantins</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group mb-3">
+                                            <label for="complemento" class="form-label">Complemento</label>
+                                            <textarea class="form-control" id="complemento" name="complemento" rows="2" placeholder="Apartamento, sala, bloco, observações adicionais..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-navigation mt-4">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i>
+                                        <span class="d-none d-sm-inline">Anterior</span>
+                                        <span class="d-sm-none">Voltar</span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span class="d-none d-sm-inline">Próximo</span>
+                                        <span class="d-sm-none">Avançar</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Dados do Responsável -->
+                            <div class="step-content" id="step3">
+                                <h5 class="mb-3 fs-5">Dados do Responsável</h5>
+                                <div class="row g-3">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="nome_completo" class="form-label">Nome completo <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="nome_completo" name="nome_completo" required data-msg-required="Este é um campo obrigatório.">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="whatsapp" class="form-label">WhatsApp <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" maxlength="15" required data-msg-required="Este é um campo obrigatório.">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group mb-3">
+                                            <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com" required data-msg-required="Este é um campo obrigatório." data-rule-email="true" data-msg-email="Insira um e-mail válido.">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-navigation mt-4">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i>
+                                        <span class="d-none d-sm-inline">Anterior</span>
+                                        <span class="d-sm-none">Voltar</span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                        <span class="d-none d-sm-inline">Próximo</span>
+                                        <span class="d-sm-none">Avançar</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Dados de Acesso -->
+                            <div class="step-content" id="step4">
+                                <h5 class="mb-3 fs-5">Dados de Acesso</h5>
+                                <div class="row g-3">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="senha" class="form-label">Senha <span class="text-danger">*</span></label>
+                                            <input type="password" class="form-control" id="senha" name="senha" minlength="8" required data-msg-required="Este é um campo obrigatório." data-msg-minlength="A senha deve ter pelo menos 8 caracteres.">
+                                            <small class="form-text text-muted">Mínimo de 8 caracteres</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="confirmar_senha" class="form-label">Confirmar senha <span class="text-danger">*</span></label>
+                                            <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required data-msg-required="Este é um campo obrigatório." data-rule-equalto="#senha" data-msg-equalto="A senha inserida não confere com o campo anterior.">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info mt-3">
+                                    <h6 class="alert-heading">
+                                        <i class="fas fa-info-circle me-2"></i>Quase pronto!
+                                    </h6>
+                                    <p class="mb-0">Revise seus dados e clique em "Cadastrar" para finalizar a criação da sua conta.</p>
+                                </div>
+                                <div class="step-navigation mt-4">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
+                                        <i class="fas fa-arrow-left me-2"></i>
+                                        <span class="d-none d-sm-inline">Anterior</span>
+                                        <span class="d-sm-none">Voltar</span>
+                                    </button>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-user-plus me-2"></i>
+                                        <span class="d-none d-sm-inline">Cadastrar</span>
+                                        <span class="d-sm-none">Criar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                    <form is="dmx-serverconnect-form" id="formcriarconta" class="needs-validation" method="post" action="/api/register">
-
-                        <!-- Step 1: Dados da Empresa -->
-                        <div class="step-content active" id="step1">
-                            <h5 class="mb-3">Dados da Empresa</h5>
-
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="form-group mb-3">
-                                        <label for="razao_social" class="form-label">Razão Social</label>
-                                        <input type="text" class="form-control" id="razao_social" name="razao_social" required data-msg-required="Este é um campo obrigatório.">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="nome_fantasia" class="form-label">Nome Fantasia</label>
-                                        <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" required data-msg-required="Este é um campo obrigatório.">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="cnpj" class="form-label">CNPJ</label>
-                                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18" required data-msg-required="Este é um campo obrigatório." data-msg-pattern="Digite um CNPJ válido.">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="inscricao_estadual" class="form-label">Inscrição Estadual</label>
-                                        <input type="text" class="form-control" id="inscricao_estadual" name="inscricao_estadual" placeholder="Somente números ou ISENTO">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="inscricao_municipal" class="form-label">Inscrição Municipal</label>
-                                        <input type="text" class="form-control" id="inscricao_municipal" name="inscricao_municipal">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="step-navigation mt-4">
-                                <div></div>
-                                <button type="button" class="btn btn-primary" onclick="nextStep()">
-                                    Próximo <i class="fas fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Endereço -->
-                        <div class="step-content" id="step2">
-                            <h5 class="mb-3">Endereço</h5>
-
-                            <div class="row g-3">
-                                <div class="col-md-8">
-                                    <div class="form-group mb-3">
-                                        <label for="endereco_completo" class="form-label">Endereço completo com número</label>
-                                        <input type="text" class="form-control" id="endereco_completo" name="endereco_completo">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group mb-3">
-                                        <label for="cep" class="form-label">CEP</label>
-                                        <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" maxlength="9" required data-msg-required="Este é um campo obrigatório." data-msg-pattern="Digite um CEP válido.">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <div class="form-group mb-3">
-                                        <label for="cidade" class="form-label">Cidade</label>
-                                        <input type="text" class="form-control" id="cidade" name="cidade">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group mb-3">
-                                        <label for="estado" class="form-label">Estado</label>
-                                        <select id="estado" class="form-select" name="estado">
-                                            <option value="">Selecione</option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="AP">Amapá</option>
-                                            <option value="AM">Amazonas</option>
-                                            <option value="BA">Bahia</option>
-                                            <option value="CE">Ceará</option>
-                                            <option value="DF">Distrito Federal</option>
-                                            <option value="ES">Espírito Santo</option>
-                                            <option value="GO">Goiás</option>
-                                            <option value="MA">Maranhão</option>
-                                            <option value="MT">Mato Grosso</option>
-                                            <option value="MS">Mato Grosso do Sul</option>
-                                            <option value="MG">Minas Gerais</option>
-                                            <option value="PA">Pará</option>
-                                            <option value="PB">Paraíba</option>
-                                            <option value="PR">Paraná</option>
-                                            <option value="PE">Pernambuco</option>
-                                            <option value="PI">Piauí</option>
-                                            <option value="RJ">Rio de Janeiro</option>
-                                            <option value="RN">Rio Grande do Norte</option>
-                                            <option value="RS">Rio Grande do Sul</option>
-                                            <option value="RO">Rondônia</option>
-                                            <option value="RR">Roraima</option>
-                                            <option value="SC">Santa Catarina</option>
-                                            <option value="SP">São Paulo</option>
-                                            <option value="SE">Sergipe</option>
-                                            <option value="TO">Tocantins</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group mb-3">
-                                        <label for="complemento" class="form-label">Complemento</label>
-                                        <textarea class="form-control" id="complemento" name="complemento" rows="2" placeholder="Apartamento, sala, bloco, observações adicionais..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="step-navigation mt-4">
-                                <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
-                                    <i class="fas fa-arrow-left me-2"></i> Anterior
-                                </button>
-                                <button type="button" class="btn btn-primary" onclick="nextStep()">
-                                    Próximo <i class="fas fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Dados do Responsável -->
-                        <div class="step-content" id="step3">
-                            <h5 class="mb-3">Dados do Responsável</h5>
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="nome_completo" class="form-label">Nome completo</label>
-                                        <input type="text" class="form-control" id="nome_completo" name="nome_completo" required data-msg-required="Este é um campo obrigatório.">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="whatsapp" class="form-label">WhatsApp</label>
-                                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" maxlength="15" required data-msg-required="Este é um campo obrigatório." data-msg-pattern="Digite um número de WhatsApp válido.">
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group mb-3">
-                                        <label for="email" class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com" required data-msg-required="Este é um campo obrigatório." data-rule-email="true" data-msg-email="Insira um e-mail válido.">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="step-navigation mt-4">
-                                <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
-                                    <i class="fas fa-arrow-left me-2"></i> Anterior
-                                </button>
-                                <button type="button" class="btn btn-primary" onclick="nextStep()">
-                                    Próximo <i class="fas fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Dados de Acesso -->
-                        <div class="step-content" id="step4">
-                            <h5 class="mb-3">Dados de Acesso</h5>
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="senha" class="form-label">Senha</label>
-                                        <input type="password" class="form-control" id="senha" name="senha" minlength="8" required data-msg-required="Este é um campo obrigatório." data-msg-minlength="A senha deve ter pelo menos 8 caracteres.">
-                                        <small class="form-text text-muted">Mínimo de 8 caracteres</small>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="confirmar_senha" class="form-label">Confirmar senha</label>
-                                        <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required data-msg-required="Este é um campo obrigatório." data-rule-equalto="#senha" data-msg-equalto="A senha inserida não confere com o campo anterior.">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="alert alert-info mt-3">
-                                <h6 class="alert-heading">
-                                    <i class="fas fa-info-circle me-2"></i>Quase pronto!
-                                </h6>
-                                <p class="mb-0">Revise seus dados e clique em "Cadastrar" para finalizar a criação da sua conta.</p>
-                            </div>
-
-                            <div class="step-navigation mt-4">
-                                <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
-                                    <i class="fas fa-arrow-left me-2"></i> Anterior
-                                </button>
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-user-plus me-2"></i> Cadastrar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -231,149 +231,81 @@
 
 <script>
     let currentStep = 1;
-const totalSteps = 4;
 
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // Função para aplicar máscara de CNPJ
+    // Máscaras de formatação
     function maskCNPJ(value) {
-        return value
-            .replace(/\D/g, '') // Remove tudo que não é dígito
-            .replace(/^(\d{2})(\d)/, '$1.$2') // Coloca ponto após os primeiros 2 dígitos
-            .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3') // Coloca ponto após o 5º dígito
-            .replace(/\.(\d{3})(\d)/, '.$1/$2') // Coloca barra após o 8º dígito
-            .replace(/(\d{4})(\d)/, '$1-$2') // Coloca hífen após o 12º dígito
-            .substring(0, 18); // Limita o tamanho
+        return value.replace(/\D/g, '').replace(/^(\d{2})(\d)/, '$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1/$2').replace(/(\d{4})(\d)/, '$1-$2').substring(0, 18);
     }
     
-    // Função para aplicar máscara de CEP
     function maskCEP(value) {
-        return value
-            .replace(/\D/g, '') // Remove tudo que não é dígito
-            .replace(/^(\d{5})(\d)/, '$1-$2') // Coloca hífen após o 5º dígito
-            .substring(0, 9); // Limita o tamanho
+        return value.replace(/\D/g, '').replace(/^(\d{5})(\d)/, '$1-$2').substring(0, 9);
     }
     
-    // Função para aplicar máscara de WhatsApp
     function maskWhatsApp(value) {
-        return value
-            .replace(/\D/g, '') // Remove tudo que não é dígito
-            .replace(/^(\d{2})(\d)/, '($1) $2') // Coloca parênteses e espaço após os primeiros 2 dígitos
-            .replace(/(\d{5})(\d)/, '$1-$2') // Coloca hífen após o 5º dígito do número
-            .substring(0, 15); // Limita o tamanho
+        return value.replace(/\D/g, '').replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2').substring(0, 15);
     }
     
-    // Aplicar máscara ao CNPJ
-    const cnpjInput = document.getElementById('cnpj');
-    if (cnpjInput) {
-        cnpjInput.addEventListener('input', function(e) {
-            e.target.value = maskCNPJ(e.target.value);
-        });
-        
-        cnpjInput.addEventListener('paste', function(e) {
-            setTimeout(() => {
-                e.target.value = maskCNPJ(e.target.value);
-            }, 10);
-        });
+    // Aplicar máscaras
+    const cnpj = document.getElementById('cnpj');
+    const cep = document.getElementById('cep');
+    const whatsapp = document.getElementById('whatsapp');
+    
+    if (cnpj) {
+        cnpj.addEventListener('input', e => e.target.value = maskCNPJ(e.target.value));
+        cnpj.addEventListener('paste', e => setTimeout(() => e.target.value = maskCNPJ(e.target.value), 10));
     }
     
-    // Aplicar máscara ao CEP
-    const cepInput = document.getElementById('cep');
-    if (cepInput) {
-        cepInput.addEventListener('input', function(e) {
-            e.target.value = maskCEP(e.target.value);
-        });
-        
-        cepInput.addEventListener('paste', function(e) {
-            setTimeout(() => {
-                e.target.value = maskCEP(e.target.value);
-            }, 10);
-        });
+    if (cep) {
+        cep.addEventListener('input', e => e.target.value = maskCEP(e.target.value));
+        cep.addEventListener('paste', e => setTimeout(() => e.target.value = maskCEP(e.target.value), 10));
     }
     
-    // Aplicar máscara ao WhatsApp
-    const whatsappInput = document.getElementById('whatsapp');
-    if (whatsappInput) {
-        whatsappInput.addEventListener('input', function(e) {
-            e.target.value = maskWhatsApp(e.target.value);
-        });
-        
-        whatsappInput.addEventListener('paste', function(e) {
-            setTimeout(() => {
-                e.target.value = maskWhatsApp(e.target.value);
-            }, 10);
-        });
+    if (whatsapp) {
+        whatsapp.addEventListener('input', e => e.target.value = maskWhatsApp(e.target.value));
+        whatsapp.addEventListener('paste', e => setTimeout(() => e.target.value = maskWhatsApp(e.target.value), 10));
     }
     
-    // Permitir apenas letras nos campos de nome
-    const nomeInputs = document.querySelectorAll('#nome_completo, #razao_social, #nome_fantasia, #cidade');
-    nomeInputs.forEach(function(input) {
-        input.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s\-\.']/g, '');
-        });
+    // Validação de caracteres
+    document.querySelectorAll('#nome_completo, #razao_social, #nome_fantasia, #cidade').forEach(input => {
+        input.addEventListener('input', e => e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s\-\.']/g, ''));
     });
     
-    // Permitir apenas números nas inscrições municipal
-    const inscricaoInput = document.getElementById('inscricao_municipal');
-    if (inscricaoInput) {
-        inscricaoInput.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/\D/g, '');
-        });
+    const inscricaoMunicipal = document.getElementById('inscricao_municipal');
+    if (inscricaoMunicipal) {
+        inscricaoMunicipal.addEventListener('input', e => e.target.value = e.target.value.replace(/\D/g, ''));
     }
     
-    // Permitir números e texto "ISENTO" na inscrição estadual
-    const inscricaoEstadualInput = document.getElementById('inscricao_estadual');
-    if (inscricaoEstadualInput) {
-        inscricaoEstadualInput.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^0-9ISENTO]/gi, '').toUpperCase();
-        });
+    const inscricaoEstadual = document.getElementById('inscricao_estadual');
+    if (inscricaoEstadual) {
+        inscricaoEstadual.addEventListener('input', e => e.target.value = e.target.value.replace(/[^0-9ISENTO]/gi, '').toUpperCase());
     }
-    
 });
 
-// Função para avançar para o próximo step
 function nextStep() {
-    if (validateCurrentStep()) {
-        if (currentStep < totalSteps) {
-            // Remover classe active do step atual
-            document.getElementById('step' + currentStep).classList.remove('active');
-            
-            // Avançar para próximo step
-            currentStep++;
-            
-            // Adicionar classe active ao novo step
-            document.getElementById('step' + currentStep).classList.add('active');
-            
-            // Scroll para o topo
-            window.scrollTo(0, 0);
-        }
-    }
-}
-
-// Função para voltar ao step anterior
-function prevStep() {
-    if (currentStep > 1) {
-        // Remover classe active do step atual
+    if (validateCurrentStep() && currentStep < 4) {
         document.getElementById('step' + currentStep).classList.remove('active');
-        
-        // Voltar para step anterior
-        currentStep--;
-        
-        // Adicionar classe active ao step anterior
+        currentStep++;
         document.getElementById('step' + currentStep).classList.add('active');
-        
-        // Scroll para o topo
         window.scrollTo(0, 0);
     }
 }
 
-// Função para validar o step atual
+function prevStep() {
+    if (currentStep > 1) {
+        document.getElementById('step' + currentStep).classList.remove('active');
+        currentStep--;
+        document.getElementById('step' + currentStep).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+}
+
 function validateCurrentStep() {
-    const currentStepElement = document.getElementById('step' + currentStep);
-    const requiredInputs = currentStepElement.querySelectorAll('input[required], select[required]');
+    const stepElement = document.getElementById('step' + currentStep);
+    const requiredInputs = stepElement.querySelectorAll('input[required], select[required]');
     let isValid = true;
     
-    requiredInputs.forEach(function(input) {
+    requiredInputs.forEach(input => {
         if (!input.value.trim()) {
             input.classList.add('is-invalid');
             isValid = false;
@@ -382,10 +314,7 @@ function validateCurrentStep() {
         }
     });
     
-    if (!isValid) {
-        alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
-    }
-    
+    if (!isValid) alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
     return isValid;
 }
 </script>

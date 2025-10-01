@@ -1,11 +1,92 @@
 /* MarketOPS - CSS customizado */
 
-/* ===== BOOTSTRAP-STYLE BACK BUTTON ===== */
+/* ===== BACKGROUND CLASSES ===== */
+.bg-01 {
+    background-color: #f8f9fa;
+    background-image: url(../assets/images/bg-01.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
+.bg-02 {
+    background-color: #f8f9fa;
+    background-image: url(../assets/images/bg-02.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* ===== BACK BUTTON - APPLE STYLE (QUADRADO COM BORDAS ARREDONDADAS) ===== */
 .page-header {
     margin-bottom: 2rem;
 }
 
+.back-btn-apple {
+    width: 32px;
+    height: 32px;
+    border-radius: 0.375rem; /* Bordas arredondadas, não circular */
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    color: #1f2937;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn-apple:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+    color: #111827;
+    text-decoration: none;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+}
+
+.back-btn-apple:active {
+    background: #f3f4f6;
+    border-color: #6b7280;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .back-btn-apple {
+        background: #ffffff;
+        border-color: #e5e7eb;
+        color: #374151;
+    }
+    
+    .back-btn-apple:hover {
+        background: #f9fafb;
+        border-color: #d1d5db;
+        color: #111827;
+    }
+    
+    .back-btn-apple:active {
+        background: #f3f4f6;
+        border-color: #9ca3af;
+    }
+}
+
+/* Legacy back button styles (mantido para compatibilidade) */
 .back-btn {
     width: 40px;
     height: 40px;
@@ -13,13 +94,21 @@
     background: #6c757d;
     border: 1px solid #6c757d;
     color: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-decoration: none;
+    -webkit-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
     font-size: 0.875rem;
-    flex-shrink: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
 }
 
 .back-btn:hover {
@@ -27,36 +116,25 @@
     border-color: #565e64;
     color: #ffffff;
     text-decoration: none;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .back-btn:active {
     background: #545b62;
-    border-color: #4e555b;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
 }
 
-.back-btn:focus {
-    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+/* ===== DIVISORES ===== */
+.header-divider {
+    border-top: 1px solid #dee2e6;
+    margin-top: 1.5rem;
 }
 
-/* Page Header */
-h3 {
-    font-weight: 700;
-    color: var(--bs-body-color);
-    letter-spacing: -0.025em;
-}
-
-.text-muted {
-    color: #6c757d !important;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-/* ===== ELEGANT FORM STYLING (DARK THEME) ===== */
-
-/* Form Headers */
+/* ===== FORM STYLING ===== */
 h5 {
     font-weight: 600;
     color: var(--bs-body-color);
@@ -65,37 +143,56 @@ h5 {
     letter-spacing: -0.025em;
 }
 
-/* Form Groups */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-/* Labels */
 .form-label {
     font-weight: 500;
     color: var(--bs-body-color);
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
-    letter-spacing: 0.025em;
 }
 
-/* Form Controls */
+/* Asterisco para campos obrigatórios */
+.form-label .text-danger {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 2px;
+}
+
 .form-control, .form-select {
-    border: 1px solid #495057;
+    border: 1px solid #dee2e6;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
     background-color: var(--bs-body-bg);
     color: var(--bs-body-color);
 }
 
 .form-control:focus, .form-select:focus {
     border-color: #0d6efd;
-    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    -webkit-box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
     outline: none;
-    background-color: var(--bs-body-bg);
-    color: var(--bs-body-color);
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.form-control::-moz-placeholder {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.form-control::-ms-input-placeholder {
+    color: #6c757d;
+    font-size: 0.875rem;
 }
 
 .form-control::placeholder {
@@ -103,42 +200,41 @@ h5 {
     font-size: 0.875rem;
 }
 
-/* Textarea Specific */
-textarea.form-control {
-    resize: vertical;
-    min-height: calc(2.5rem + 2px);
-}
-
-/* Step Content */
+/* ===== STEP CONTENT ===== */
 .step-content {
     display: none;
-    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0;
+    -webkit-animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.3s ease;
 }
 
 .step-content.active {
     display: block;
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; -webkit-transform: translateY(5px); transform: translateY(5px); }
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
 }
 
-/* Step Navigation */
+@keyframes fadeIn {
+    from { opacity: 0; -webkit-transform: translateY(5px); transform: translateY(5px); }
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+/* ===== NAVIGATION ===== */
 .step-navigation {
-    border-top: 1px solid #495057;
+    border-top: 1px solid #dee2e6;
     padding-top: 1.5rem;
     margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .step-navigation .btn {
@@ -146,48 +242,21 @@ textarea.form-control {
     font-weight: 500;
     font-size: 0.875rem;
     border-radius: 0.5rem;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 0.025em;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
 }
 
-.step-navigation .btn-primary {
-    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
-    border: none;
-    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.3);
-}
-
-.step-navigation .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
-}
-
-.step-navigation .btn-success {
-    background: linear-gradient(135deg, #198754 0%, #157347 100%);
-    border: none;
-    box-shadow: 0 2px 4px rgba(25, 135, 84, 0.3);
-}
-
+.step-navigation .btn-primary:hover,
 .step-navigation .btn-success:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+    -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
 }
 
-.step-navigation .btn-outline-secondary {
-    background: transparent;
-    border: 1px solid #6c757d;
-    color: #adb5bd;
-}
-
-.step-navigation .btn-outline-secondary:hover {
-    background: #495057;
-    border-color: #6c757d;
-    color: #f8f9fa;
-}
-
-/* Form Validation */
+/* ===== VALIDATION ===== */
 .form-control.is-invalid {
     border-color: #dc3545;
-    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+    -webkit-box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
 }
 
 .form-text {
@@ -196,7 +265,7 @@ textarea.form-control {
     margin-top: 0.25rem;
 }
 
-/* Alert Styling */
+/* ===== ALERT ===== */
 .alert-info {
     background: rgba(13, 110, 253, 0.1);
     border: 1px solid rgba(13, 110, 253, 0.2);
@@ -213,79 +282,309 @@ textarea.form-control {
 
 /* ===== RESPONSIVE DESIGN ===== */
 
-@media (max-width: 768px) {
+/* Mobile First - Extra Small devices (default) */
+@media (max-width: 575.98px) {
+    .page-header {
+        margin-bottom: 1.25rem;
+    }
+    
+    .page-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .page-header p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .back-btn-apple {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+        border-radius: 0.25rem; /* Bordas menores em mobile */
+    }
+    
+    .page-header .d-flex {
+        gap: 0.75rem !important;
+    }
+    
+    .header-divider {
+        margin-top: 1.25rem;
+    }
+    
+    h5 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .form-control, .form-select {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.875rem;
+    }
+    
+    .form-label {
+        font-size: 0.8rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .form-label .text-danger {
+        font-size: 0.85rem;
+    }
+    
     .step-navigation {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         gap: 0.75rem;
+        padding-top: 1.25rem;
+        margin-top: 1.5rem;
     }
     
     .step-navigation .btn {
         width: 100%;
-        justify-content: center;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
     }
     
-    .form-group {
-        margin-bottom: 1.25rem;
+    .alert-info {
+        padding: 0.875rem 1rem;
+        font-size: 0.85rem;
     }
     
-    .back-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 0.8rem;
+    .alert-info .alert-heading {
+        font-size: 0.9rem;
+        margin-bottom: 0.375rem;
     }
     
+    /* Reduzir padding geral em mobile */
+    .vh-100 .row .col-12 > .w-100 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
     .page-header {
         margin-bottom: 1.5rem;
     }
-}
-
-@media (max-width: 576px) {
-    h5 {
-        font-size: 1rem;
-        margin-bottom: 1.25rem;
+    
+    .back-btn-apple {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+        border-radius: 0.3rem;
     }
     
-    h3 {
-        font-size: 1.375rem;
+    .page-header .d-flex {
+        gap: 1rem !important;
+    }
+    
+    .header-divider {
+        margin-top: 1.25rem;
+    }
+    
+    .step-navigation {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .step-navigation .btn {
+        min-width: 120px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .page-header {
+        margin-bottom: 1.75rem;
+    }
+    
+    .back-btn-apple {
+        width: 32px;
+        height: 32px;
+        font-size: 0.825rem;
+        border-radius: 0.375rem;
+    }
+    
+    .page-header .d-flex {
+        gap: 1rem !important;
+    }
+    
+    .header-divider {
+        margin-top: 1.5rem;
+    }
+    
+    h5 {
+        font-size: 1.1rem;
+    }
+    
+    .step-navigation .btn {
+        padding: 0.75rem 1.25rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .page-header {
+        margin-bottom: 2rem;
+    }
+    
+    .back-btn-apple {
+        width: 32px;
+        height: 32px;
+        font-size: 0.875rem;
+        border-radius: 0.375rem;
+    }
+    
+    .page-header .d-flex {
+        gap: 1rem !important;
+    }
+    
+    .header-divider {
+        margin-top: 1.5rem;
+    }
+    
+    h5 {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .step-navigation .btn {
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .page-header {
+        margin-bottom: 2.25rem;
+    }
+    
+    .back-btn-apple {
+        width: 34px;
+        height: 34px;
+        border-radius: 0.375rem;
+    }
+    
+    .page-header .d-flex {
+        gap: 1.25rem !important;
+    }
+    
+    .header-divider {
+        margin-top: 1.75rem;
+    }
+    
+    .form-control, .form-select {
+        padding: 0.8rem 1.1rem;
+    }
+    
+    .step-navigation {
+        padding-top: 1.75rem;
+        margin-top: 2.25rem;
+    }
+}
+
+/* XXL devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .page-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .back-btn-apple {
+        width: 36px;
+        height: 36px;
+        border-radius: 0.375rem;
+    }
+    
+    .page-header .d-flex {
+        gap: 1.5rem !important;
+    }
+    
+    .header-divider {
+        margin-top: 2rem;
+    }
+    
+    h5 {
+        font-size: 1.2rem;
+        margin-bottom: 1.75rem;
+    }
+    
+    .step-navigation {
+        padding-top: 2rem;
+        margin-top: 2.5rem;
+    }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+@media (prefers-reduced-motion: reduce) {
+    .step-content,
+    .back-btn-apple,
+    .back-btn,
+    .btn {
+        -webkit-animation: none;
+                animation: none;
+        -webkit-transition: none;
+        transition: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .form-control, .form-select {
+        border-width: 2px;
+    }
+    
+    .back-btn-apple {
+        border-width: 2px;
+        -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     }
     
     .back-btn {
-        width: 34px;
-        height: 34px;
-        font-size: 0.75rem;
+        border-width: 2px;
     }
     
-    .text-muted {
-        font-size: 0.85rem;
+    .alert-info {
+        border-width: 2px;
+    }
+    
+    .header-divider {
+        border-width: 2px;
+    }
+    
+    .step-navigation {
+        border-width: 2px;
+    }
+    
+    .form-label .text-danger {
+        font-weight: 700;
     }
 }
 
-/* ===== DARK THEME COMPATIBILITY ===== */
-
-/* Ensure compatibility with Bootstrap dark theme */
-[data-bs-theme="dark"] .alert-info {
-    background: rgba(13, 110, 253, 0.1);
-    border-color: rgba(13, 110, 253, 0.2);
-    color: #6ea8fe;
-}
-
-[data-bs-theme="dark"] .back-btn {
-    background: #6c757d;
-    border-color: #6c757d;
-    color: #ffffff;
-}
-
-[data-bs-theme="dark"] .back-btn:hover {
-    background: #5c636a;
-    border-color: #565e64;
-    color: #ffffff;
-}
-
-[data-bs-theme="dark"] .back-btn:active {
-    background: #545b62;
-    border-color: #4e555b;
-}
-
-[data-bs-theme="dark"] .back-btn:focus {
-    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (hover: none) and (pointer: coarse) {
+    .back-btn-apple {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .back-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .step-navigation .btn {
+        min-height: 44px;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .form-control, .form-select {
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+    }
 }
