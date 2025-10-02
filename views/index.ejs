@@ -13,7 +13,7 @@
                             <p class="text-muted mb-0 mt-2 fs-6">Faça login para acessar sua conta e gerenciar suas operações.</p>
                         </div>
 
-                        <form is="dmx-serverconnect-form" id="login_form" class="needs-validation" method="post" action="/api/auth/login">
+                        <form is="dmx-serverconnect-form" id="login_form" class="needs-validation" method="post" action="/api/login" dmx-on:error="notificacoes.danger('Ocorreu um erro: '+lastError.status+lastError.message+lastError.response+'. Entre em contato com o suporte através do e-mail suporte@marketops.com.br')" dmx-on:success="notificacoes.success('Seja-bem vindo(a)!')" dmx-on:unauthorized="notificacoes.warning('E-mail ou senha errados. Entre em contato com o gestor da conta.')" dmx-on:forbidden="notificacoes.warning('Conta não encontrada. Entre em contato com o gestor da conta.')">
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="form-group mb-3">
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="d-grid mb-3">
-                                <button type="button" class="btn btn-primary" dmx-on:click="login_form.submit()" dmx-bind:disabled="login_form.state.executing">
+                                <button type="submit" class="btn btn-primary" dmx-on:click="login_form.submit()" dmx-bind:disabled="login_form.state.executing">
                                     <span dmx-hide="login_form.state.executing">
                                         <i class="fas fa-sign-in-alt me-2"></i>Entrar
                                     </span>
