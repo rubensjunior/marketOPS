@@ -36,7 +36,7 @@
           "schema": "realtime"
         }
       },
-      "usuarios": {
+      "empresa": {
         "db": {
           "schema": "public"
         },
@@ -44,6 +44,137 @@
           "id": {
             "db": {
               "type": "bigIncrements",
+              "primary": true,
+              "unique": true,
+              "nullable": false
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "timestamp",
+              "default": "now()",
+              "useTz": true,
+              "primary": false,
+              "unique": false,
+              "nullable": false
+            }
+          },
+          "razao_social": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "nome_fantasia": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "cnpj": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "endereco": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "cep": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "complemento": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "cidade": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "estado": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "status": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "inscricao_estadual": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "inscricao_municipal": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          }
+        },
+        "refs": {
+          "usuario": "empresa_atual"
+        },
+        "sub": {
+          "empresa_usuario": "empresa"
+        }
+      },
+      "usuario": {
+        "db": {
+          "schema": "public"
+        },
+        "columns": {
+          "id": {
+            "db": {
+              "type": "uuid",
+              "default": "gen_random_uuid()",
               "primary": true,
               "unique": true,
               "nullable": false
@@ -86,6 +217,15 @@
               "nullable": true
             }
           },
+          "password": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
           "empresa_atual": {
             "db": {
               "type": "reference",
@@ -98,8 +238,71 @@
               "onUpdate": "NO ACTION",
               "onDelete": "NO ACTION"
             }
+          }
+        },
+        "refs": {
+          "empresa_usuario": "usuario"
+        }
+      },
+      "empresa_usuario": {
+        "db": {
+          "schema": "public"
+        },
+        "columns": {
+          "id": {
+            "db": {
+              "type": "bigIncrements",
+              "primary": true,
+              "unique": true,
+              "nullable": false
+            }
           },
-          "password": {
+          "created_at": {
+            "db": {
+              "type": "timestamp",
+              "default": "now()",
+              "useTz": true,
+              "primary": false,
+              "unique": false,
+              "nullable": false
+            }
+          },
+          "empresa": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "unique": false,
+              "nullable": true,
+              "references": "id",
+              "inTable": "empresa",
+              "referenceType": "bigInteger",
+              "onUpdate": "NO ACTION",
+              "onDelete": "NO ACTION"
+            }
+          },
+          "usuario": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "unique": false,
+              "nullable": true,
+              "references": "id",
+              "inTable": "usuario",
+              "referenceType": "uuid",
+              "onUpdate": "NO ACTION",
+              "onDelete": "NO ACTION"
+            }
+          },
+          "status": {
+            "db": {
+              "type": "string",
+              "maxLength": -5,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "papel": {
             "db": {
               "type": "string",
               "maxLength": -5,
@@ -108,21 +311,59 @@
               "nullable": true
             }
           }
-        }
-      },
-      "empresa": {
-        "db": {
-          "schema": "public"
         },
-        "refs": {
-          "usuarios": "empresa_atual"
-        }
+        "parent": "empresa"
       },
       "vault.secrets": {
         "db": {
           "schema": "vault",
           "comment": "Table with encrypted `secret` column for storing sensitive information on disk."
         }
+      },
+      "storage.prefixes": {
+        "db": {
+          "schema": "storage"
+        }
+      },
+      "storage.objects": {
+        "db": {
+          "schema": "storage"
+        }
+      },
+      "storage.migrations": {
+        "db": {
+          "schema": "storage"
+        }
+      },
+      "storage.buckets": {
+        "db": {
+          "schema": "storage"
+        },
+        "refs": {
+          "storage.prefixes": "bucket_id",
+          "storage.objects": "bucket_id",
+          "storage.s3_multipart_uploads": "bucket_id",
+          "storage.s3_multipart_uploads_parts": "bucket_id"
+        }
+      },
+      "storage.buckets_analytics": {
+        "db": {
+          "schema": "storage"
+        }
+      },
+      "storage.s3_multipart_uploads": {
+        "db": {
+          "schema": "storage"
+        },
+        "sub": {
+          "storage.s3_multipart_uploads_parts": "upload_id"
+        }
+      },
+      "storage.s3_multipart_uploads_parts": {
+        "db": {
+          "schema": "storage"
+        },
+        "parent": "s3_multipart_uploads"
       },
       "auth.sso_domains": {
         "db": {
@@ -195,6 +436,51 @@
         "db": {
           "schema": "auth",
           "comment": "Auth: Audit trail for user actions."
+        },
+        "columns": {
+          "instance_id": {
+            "db": {
+              "type": "uuid",
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "id": {
+            "db": {
+              "type": "uuid",
+              "primary": true,
+              "unique": true,
+              "nullable": false
+            }
+          },
+          "payload": {
+            "db": {
+              "type": "json",
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "timestamp",
+              "useTz": true,
+              "primary": false,
+              "unique": false,
+              "nullable": true
+            }
+          },
+          "ip_address": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 64,
+              "primary": false,
+              "unique": false,
+              "nullable": false
+            }
+          }
         }
       },
       "auth.saml_relay_states": {
@@ -244,48 +530,9 @@
         "db": {
           "schema": "auth"
         }
-      },
-      "storage.objects": {
-        "db": {
-          "schema": "storage"
-        }
-      },
-      "storage.migrations": {
-        "db": {
-          "schema": "storage"
-        }
-      },
-      "storage.buckets": {
-        "db": {
-          "schema": "storage"
-        },
-        "refs": {
-          "storage.objects": "bucket_id",
-          "storage.s3_multipart_uploads": "bucket_id",
-          "storage.s3_multipart_uploads_parts": "bucket_id"
-        }
-      },
-      "storage.s3_multipart_uploads": {
-        "db": {
-          "schema": "storage"
-        },
-        "sub": {
-          "storage.s3_multipart_uploads_parts": "upload_id"
-        }
-      },
-      "storage.s3_multipart_uploads_parts": {
-        "db": {
-          "schema": "storage"
-        },
-        "parent": "s3_multipart_uploads"
       }
     },
     "views": {
-      "vault.decrypted_secrets": {
-        "db": {
-          "schema": "vault"
-        }
-      },
       "extensions.pg_stat_statements_info": {
         "db": {
           "schema": "extensions"
@@ -294,6 +541,11 @@
       "extensions.pg_stat_statements": {
         "db": {
           "schema": "extensions"
+        }
+      },
+      "vault.decrypted_secrets": {
+        "db": {
+          "schema": "vault"
         }
       }
     }

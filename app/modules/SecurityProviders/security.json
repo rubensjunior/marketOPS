@@ -8,7 +8,7 @@
     "passwordVerify": true,
     "secret": "RKSOPS025",
     "users": {
-      "table": "usuarios",
+      "table": "usuario",
       "identity": "id",
       "username": "email",
       "password": "password"

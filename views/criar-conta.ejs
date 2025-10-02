@@ -22,7 +22,7 @@
                         <!-- Divisor entre header e formulário -->
                         <div class="header-divider mb-4"></div>
 
-                        <form is="dmx-serverconnect-form" id="formcriarconta" class="needs-validation" method="post" action="/api/register">
+                        <form is="dmx-serverconnect-form" id="formcriarconta" class="needs-validation" method="post" action="/api/criar-conta" dmx-on:error="notificacoes.danger('Ocorreu um erro: '+lastError.status+lastError.message+lastError.response+'. Entre em contato atraves do e-mail suporte@marketops.com.br')" dmx-on:success="run([{run:{outputType:'text',action:`notificacoes.success(\'Sua conta foi criada com sucesso! Você será redirecionado para página de login.\')`}},{wait:{delay:3000}},{run:{outputType:'text',action:`navegacao.goto(\'/\',true)`}}])">
 
                             <!-- Step 1: Dados da Empresa -->
                             <div class="step-content active" id="step1">
@@ -49,7 +49,7 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group mb-3">
                                             <label for="inscricao_estadual" class="form-label">Inscrição Estadual</label>
-                                            <input type="text" class="form-control" id="inscricao_estadual" name="inscricao_estadual" placeholder="Somente números ou ISENTO">
+                                            <input type="text" class="form-control" id="inscricao_estadual" name="inscricao_estadual">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
