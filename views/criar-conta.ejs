@@ -232,90 +232,139 @@
 <script>
     let currentStep = 1;
 
-document.addEventListener('DOMContentLoaded', function() {
     // Máscaras de formatação
     function maskCNPJ(value) {
-        return value.replace(/\D/g, '').replace(/^(\d{2})(\d)/, '$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1/$2').replace(/(\d{4})(\d)/, '$1-$2').substring(0, 18);
+        return value.replace(/\D/g, '')
+            .replace(/^(\d{2})(\d)/, '$1.$2')
+            .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+            .replace(/\.(\d{3})(\d)/, '.$1/$2')
+            .replace(/(\d{4})(\d)/, '$1-$2')
+            .substring(0, 18);
     }
     
     function maskCEP(value) {
-        return value.replace(/\D/g, '').replace(/^(\d{5})(\d)/, '$1-$2').substring(0, 9);
+        return value.replace(/\D/g, '')
+            .replace(/^(\d{5})(\d)/, '$1-$2')
+            .substring(0, 9);
     }
     
     function maskWhatsApp(value) {
-        return value.replace(/\D/g, '').replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2').substring(0, 15);
-    }
-    
-    // Aplicar máscaras
-    const cnpj = document.getElementById('cnpj');
-    const cep = document.getElementById('cep');
-    const whatsapp = document.getElementById('whatsapp');
-    
-    if (cnpj) {
-        cnpj.addEventListener('input', e => e.target.value = maskCNPJ(e.target.value));
-        cnpj.addEventListener('paste', e => setTimeout(() => e.target.value = maskCNPJ(e.target.value), 10));
-    }
-    
-    if (cep) {
-        cep.addEventListener('input', e => e.target.value = maskCEP(e.target.value));
-        cep.addEventListener('paste', e => setTimeout(() => e.target.value = maskCEP(e.target.value), 10));
-    }
-    
-    if (whatsapp) {
-        whatsapp.addEventListener('input', e => e.target.value = maskWhatsApp(e.target.value));
-        whatsapp.addEventListener('paste', e => setTimeout(() => e.target.value = maskWhatsApp(e.target.value), 10));
-    }
-    
-    // Validação de caracteres
-    document.querySelectorAll('#nome_completo, #razao_social, #nome_fantasia, #cidade').forEach(input => {
-        input.addEventListener('input', e => e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s\-\.']/g, ''));
-    });
-    
-    const inscricaoMunicipal = document.getElementById('inscricao_municipal');
-    if (inscricaoMunicipal) {
-        inscricaoMunicipal.addEventListener('input', e => e.target.value = e.target.value.replace(/\D/g, ''));
-    }
-    
-    const inscricaoEstadual = document.getElementById('inscricao_estadual');
-    if (inscricaoEstadual) {
-        inscricaoEstadual.addEventListener('input', e => e.target.value = e.target.value.replace(/[^0-9ISENTO]/gi, '').toUpperCase());
-    }
-});
-
-function nextStep() {
-    if (validateCurrentStep() && currentStep < 4) {
-        document.getElementById('step' + currentStep).classList.remove('active');
-        currentStep++;
-        document.getElementById('step' + currentStep).classList.add('active');
-        window.scrollTo(0, 0);
-    }
-}
-
-function prevStep() {
-    if (currentStep > 1) {
-        document.getElementById('step' + currentStep).classList.remove('active');
-        currentStep--;
-        document.getElementById('step' + currentStep).classList.add('active');
-        window.scrollTo(0, 0);
-    }
-}
-
-function validateCurrentStep() {
-    const stepElement = document.getElementById('step' + currentStep);
-    const requiredInputs = stepElement.querySelectorAll('input[required], select[required]');
-    let isValid = true;
-    
-    requiredInputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.classList.add('is-invalid');
-            isValid = false;
+        value = value.replace(/\D/g, '');
+        if (value.length <= 10) {
+            return value.replace(/^(\d{2})(\d)/, '($1) $2')
+                       .replace(/(\d{4})(\d)/, '$1-$2');
         } else {
-            input.classList.remove('is-invalid');
+            return value.replace(/^(\d{2})(\d)/, '($1) $2')
+                       .replace(/(\d{5})(\d)/, '$1-$2')
+                       .substring(0, 15);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Aplicar máscaras
+        const cnpj = document.getElementById('cnpj');
+        const cep = document.getElementById('cep');
+        const whatsapp = document.getElementById('whatsapp');
+        
+        if (cnpj) {
+            cnpj.addEventListener('input', function(e) {
+                e.target.value = maskCNPJ(e.target.value);
+            });
+            cnpj.addEventListener('paste', function(e) {
+                setTimeout(() => {
+                    e.target.value = maskCNPJ(e.target.value);
+                }, 10);
+            });
+        }
+        
+        if (cep) {
+            cep.addEventListener('input', function(e) {
+                e.target.value = maskCEP(e.target.value);
+            });
+            cep.addEventListener('paste', function(e) {
+                setTimeout(() => {
+                    e.target.value = maskCEP(e.target.value);
+                }, 10);
+            });
+        }
+        
+        if (whatsapp) {
+            whatsapp.addEventListener('input', function(e) {
+                e.target.value = maskWhatsApp(e.target.value);
+            });
+            whatsapp.addEventListener('paste', function(e) {
+                setTimeout(() => {
+                    e.target.value = maskWhatsApp(e.target.value);
+                }, 10);
+            });
+        }
+        
+        // Validação de caracteres
+        document.querySelectorAll('#nome_completo, #razao_social, #nome_fantasia, #cidade').forEach(input => {
+            input.addEventListener('input', e => e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s\-\.']/g, ''));
+        });
+        
+        const inscricaoMunicipal = document.getElementById('inscricao_municipal');
+        if (inscricaoMunicipal) {
+            inscricaoMunicipal.addEventListener('input', e => e.target.value = e.target.value.replace(/\D/g, ''));
+        }
+        
+        const inscricaoEstadual = document.getElementById('inscricao_estadual');
+        if (inscricaoEstadual) {
+            inscricaoEstadual.addEventListener('input', e => e.target.value = e.target.value.replace(/[^0-9ISENTO]/gi, '').toUpperCase());
         }
     });
-    
-    if (!isValid) alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
-    return isValid;
+
+    function nextStep() {
+        if (validateCurrentStep() && currentStep < 4) {
+            document.getElementById('step' + currentStep).classList.remove('active');
+            currentStep++;
+            document.getElementById('step' + currentStep).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 1) {
+            document.getElementById('step' + currentStep).classList.remove('active');
+            currentStep--;
+            document.getElementById('step' + currentStep).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function validateCurrentStep() {
+        const stepElement = document.getElementById('step' + currentStep);
+        const requiredInputs = stepElement.querySelectorAll('input[required], select[required]');
+        let isValid = true;
+        
+        requiredInputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+        
+        if (!isValid) alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+        return isValid;
+    }
+
+    // Tornar as funções globais para serem acessíveis pelos buttons
+    window.nextStep = nextStep;
+    window.prevStep = prevStep;
+    window.validateCurrentStep = validateCurrentStep;
+</script>
+
+<meta name="ac:route" content="/f/security/criar-conta">
+
+</html>
+}
+});
+
+if (!isValid) alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+return isValid;
 }
 </script>
 
